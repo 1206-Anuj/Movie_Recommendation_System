@@ -1,10 +1,13 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import gzip
 
 # load saved data
 movies = pickle.load(open('movies.pkl','rb'))
-similarity = pickle.load(open('similarity.pkl','rb'))
+
+with gzip.open('similarity.pkl.gz','rb') as f:
+    similarity = pickle.load(f)
 
 
 # recommendation function
